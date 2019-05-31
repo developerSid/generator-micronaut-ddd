@@ -1,0 +1,40 @@
+{
+  "name": "generator-micronaut-ddd",
+  "version": "0.0.1",
+  "description": "Micronaut generator for kotlin based micronaut components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developerSid/generator-micronaut-ddd.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "micronaut",
+    "kotlin",
+    "generator"
+  ],
+  "author": "Gary Myers developerSid@gmail.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/developerSid/generator-micronaut-ddd/issues"
+  },
+  "homepage": "https://github.com/developerSid/generator-micronaut-ddd#readme",
+  "dependencies": {
+    "camel-case": "^3.0.0",
+    "chalk": "^2.4.2",
+    "decamelize": "^3.2.0",
+    "dot-case": "^2.1.1",
+    "mkdirp": "^0.5.1",
+    "pascal-case": "^2.0.1",
+    "snake-case": "^2.1.0",
+    "yeoman-generator": "^4.0.1",
+    "yo": "^2.0.6",
+    "yosay": "^2.0.2"
+  },
+  "files": [
+    "app"
+  ]
+}
