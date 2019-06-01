@@ -1,4 +1,4 @@
-package com.cynergisuite.domain
+package <%= pkg %>.domain
 
 import java.util.UUID
 
@@ -16,7 +16,7 @@ interface Entity<ENTITY> : IdentifiableEntity {
 
    /**
     * Creates a copy of this instance of an Entity.  Contract is the same as a Kotlin data class's copy method with
-    * no paramerters.
+    * no parameters.
     */
    fun copyMe(): ENTITY
 }

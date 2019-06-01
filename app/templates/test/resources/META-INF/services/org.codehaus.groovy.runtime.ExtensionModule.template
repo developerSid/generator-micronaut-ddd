@@ -1,0 +1,3 @@
+moduleName = <%= lineOfBusiness %>-testing-module
+moduleVersion = 1.0
+extensionClasses = <%= pkg %>.domain.infrastructure.HttpResponseExtension

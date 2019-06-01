@@ -2,6 +2,10 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const camelCase = require('camel-case');
+const pascalCase = require('pascal-case');
+const dotCase = require('dot-case');
+const decamelize = require('decamelize');
 
 module.exports = class extends Generator {
    constructor(args, opts) {
@@ -26,18 +30,6 @@ module.exports = class extends Generator {
          store: true
       }, {
          type: 'input',
-         name: 'mainSrc',
-         message: "What is the main source directory?",
-         default: 'src/main/kotlin',
-         store: true
-      }, {
-         type: 'input',
-         name: 'testSrc',
-         message: "What is the test source directory?",
-         default: 'src/test/groovy',
-         store: true
-      }, {
-         type: 'input',
          name: 'lob',
          message: "What is the name of this line of business?",
          default: 'StuffDoer',
@@ -59,6 +51,62 @@ module.exports = class extends Generator {
    }
 
    writing() {
+      const appName = this.config.get('name');
+      const lineOfBusiness = this.config.get('lob');
+      const pkg = this.config.get('basePkg');
+      const pkgPath = pkg.replace(/\./gi, '/');
+      const templateValues = {
+         appName: appName,
+         lineOfBusiness: lineOfBusiness,
+         pkg: pkg
+      };
 
+      const templates = {
+         'test/groovy/infrastructure/ControllerSpecificationBase.groovy.template': `src/test/groovy/${pkgPath}/domain/infrastructure/ControllerSpecificationBase.groovy`,
+         'test/groovy/infrastructure/ServiceSpecificationBase.groovy.template': `src/test/groovy/${pkgPath}/domain/infrastructure/ServiceSpecificationBase.groovy`,
+         'test/groovy/infrastructure/TestingExtensions.groovy.template': `src/test/groovy/${pkgPath}/domain/infrastructure/TestingExtensions.groovy`,
+         'test/resources/META-INF/services/org.codehaus.groovy.runtime.ExtensionModule.template': `src/test/resources/META-INF/services/org.codehaus.groovy.runtime.ExtensionModule`,
+         'test/resources/application-test.yml': `src/test/resources/application-test.yml`,
+         'test/resources/logback-test.xml': `src/test/resources/logback-test.xml`,
+         'main/kotlin/IdentifiableValueObject.kt.template': `src/main/kotlin/${pkgPath}/domain/IdentifiableValueObject.kt`,
+         'main/kotlin/IdentifiableEntity.kt.template': `src/main/kotlin/${pkgPath}/domain/IdentifiableEntity.kt`,
+         'main/kotlin/Entity.kt.template': `src/main/kotlin/${pkgPath}/domain/Entity.kt`,
+         'main/kotlin/Page.kt.template': `src/main/kotlin/${pkgPath}/domain/Page.kt`,
+         'main/kotlin/PageRequest.kt.template': `src/main/kotlin/${pkgPath}/domain/PageRequest.kt`,
+         'main/kotlin/SimpleIdentifiableEntity.kt.template': `src/main/kotlin/${pkgPath}/domain/SimpleIdentifiableEntity.kt`,
+         'main/kotlin/TypeDomainEntity.kt.template': `src/main/kotlin/${pkgPath}/domain/TypeDomainEntity.kt`,
+         'main/kotlin/TypeDomainService.kt.template': `src/main/kotlin/${pkgPath}/domain/TypeDomainService.kt`,
+         'main/kotlin/ValueObject.kt.template': `src/main/kotlin/${pkgPath}/domain/ValueObject.kt`,
+         'main/kotlin/ValueObjectBase.kt.template': `src/main/kotlin/${pkgPath}/domain/ValueObjectBase.kt.template`,
+         'main/kotlin/infrastructure/IdentifiableService.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/IdentifiableService.kt.template`,
+         'main/kotlin/infrastructure/Repository.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/Repository.kt.template`,
+         'main/kotlin/infrastructure/RepositoryPage.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/RepositoryPage.kt.template`,
+         'main/kotlin/infrastructure/TypeDomainRepository.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/TypeDomainRepository.kt.template`,
+      };
+
+      this.log(`Generating Domain ${chalk.green(lineOfBusiness)}`);
+
+      Object.keys(templates).forEach((key) => {
+         const templateFile = key;
+         const destDir = templates[key];
+
+         this.fs.copyTpl(
+             this.templatePath(templateFile),
+             this.destinationPath(destDir),
+             templateValues
+         );
+      });
+   }
+
+   static determineDomainPackage(existing, domain) {
+      let toReturn;
+
+      if (existing != null && existing.length > 3) {
+         toReturn = existing;
+      } else {
+         toReturn = domain;
+      }
+
+      return dotCase(camelCase(toReturn))
    }
 };

@@ -1,4 +1,4 @@
-package com.cynergisuite.domain.infrastructure
+package <%= pkg %>.domain.infrastructure
 
 /**
  * Defines the contract of a repository that deals with a "domain" table where the rows in that table aren't managed

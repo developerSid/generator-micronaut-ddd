@@ -1,4 +1,4 @@
-package com.cynergisuite.domain
+package <%= pkg %>.domain
 
 /**
  * Helper class for defining data transfer objects that will be passed around with the web tier.

@@ -1,4 +1,4 @@
-package com.cynergisuite.domain
+package <%= pkg %>.domain
 
 data class SimpleIdentifiableEntity(
    private val id: Long

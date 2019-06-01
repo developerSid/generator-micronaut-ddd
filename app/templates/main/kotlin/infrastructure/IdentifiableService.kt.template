@@ -1,4 +1,4 @@
-package com.cynergisuite.domain.infrastructure
+package <%= pkg %>.domain.infrastructure
 
 /**
  * Most services that interact with a [com.cynergisuite.middleware.repository.CrudRepository] are going to want to

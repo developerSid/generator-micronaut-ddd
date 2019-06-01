@@ -42,7 +42,7 @@ module.exports = class extends Generator {
       const pkgPath = pkg.replace(/\./gi, '/');
       const mainSrc = this.config.get('mainSrc');
       const testSrc = this.config.get('testSrc');
-      const domainPackage = this.determineDomainPackage(existing, domain);
+      const domainPackage = exports.determineDomainPackage(existing, domain);
       const domainPath = domainPackage.replace(/\./gi, '/');
       const fullDomainPackage = `${pkg}.${appName}.${domainPackage}`;
       const tableName = decamelize(domain);
@@ -80,7 +80,7 @@ module.exports = class extends Generator {
       });
    }
 
-   determineDomainPackage(existing, domain) {
+   static determineDomainPackage(existing, domain) {
       let toReturn;
 
       if (existing != null && existing.length > 3) {

@@ -1,9 +1,9 @@
-package com.cynergisuite.domain.infrastructure
+package <%= pkg %>.domain.infrastructure
 
-import com.cynergisuite.domain.IdentifiableEntity
-import com.cynergisuite.domain.IdentifiableValueObject
-import com.cynergisuite.domain.Page
-import com.cynergisuite.domain.PageRequest
+package <%= pkg %>.domain.IdentifiableEntity
+package <%= pkg %>.domain.IdentifiableValueObject
+package <%= pkg %>.domain.Page
+package <%= pkg %>.domain.PageRequest
 
 data class RepositoryPage<ENTITY: IdentifiableEntity>(
    val elements: List<ENTITY>,

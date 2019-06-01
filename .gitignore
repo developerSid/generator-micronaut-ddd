@@ -244,3 +244,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/node,linux,macos,windows,webstorm+all
+src/
+.yo-rc.json

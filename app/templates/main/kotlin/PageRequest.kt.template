@@ -1,8 +1,5 @@
-package com.cynergisuite.domain
+package <%= pkg %>.domain
 
-import com.cynergisuite.middleware.localization.MessageCodes.Validation.MAX
-import com.cynergisuite.middleware.localization.MessageCodes.Validation.MIN
-import com.cynergisuite.middleware.localization.MessageCodes.Validation.NOT_NULL
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotNull
@@ -12,20 +9,20 @@ import javax.validation.constraints.Pattern.Flag.CASE_INSENSITIVE
 @ValueObject
 data class PageRequest(
 
-   @field:NotNull(message = NOT_NULL)
-   @field:Min(value = 0, message = MIN)
-   var page: Int? = 0,
+   @field:NotNull
+   @field:Min(value = 1)
+   var page: Int? = 1,
 
-   @field:NotNull(message = NOT_NULL)
-   @field:Min(value = 1, message = MIN)
-   @field:Max(value = 100, message = MAX)
+   @field:NotNull
+   @field:Min(value = 1)
+   @field:Max(value = 100)
    var size: Int? = 10,
 
-   @field:NotNull(message = NOT_NULL)
+   @field:NotNull
    @field:Pattern(regexp = "id|name", flags = [CASE_INSENSITIVE])
    var sortBy: String? = "id",
 
-   @field:NotNull(message = NOT_NULL)
+   @field:NotNull
    @field:Pattern(regexp = "ASC|DESC", flags = [CASE_INSENSITIVE])
    var sortDirection: String? = "ASC"
 ) {
@@ -41,12 +38,13 @@ data class PageRequest(
       return "?page=$page&size=$size&sortBy=$sortBy&sortDirection=$sortDirection"
    }
 
-   fun offset(): Int =
-      if ( (page ?: 0) == 0) {
-         0
-      } else {
-         (page ?: 0) * (size ?: 0)
-      }
+   fun offset(): Int {
+      val requestedOffsetPage: Int = page ?: 1
+      val offsetPage = requestedOffsetPage - 1
+      val offsetSize = size ?: 0
+
+      return offsetPage * offsetSize
+   }
 }
 
 enum class PageRequestSortDirection(

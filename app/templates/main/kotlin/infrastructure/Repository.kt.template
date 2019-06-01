@@ -1,4 +1,4 @@
-package com.cynergisuite.domain.infrastructure
+package <%= pkg %>.domain.infrastructure
 
 /**
  * Defines the basic operations a class that interacts with rows in the database should provide

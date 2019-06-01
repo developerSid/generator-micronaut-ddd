@@ -1,6 +1,6 @@
-package com.cynergisuite.domain
+package <%= pkg %>.domain
 
-import com.cynergisuite.middleware.localization.LocalizationService
+import <%= pkg %>.<%= lineOfBusiness %>.localization.LocalizationService
 import org.apache.commons.lang3.builder.CompareToBuilder
 import java.util.Locale
 
