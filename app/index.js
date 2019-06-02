@@ -14,25 +14,22 @@ module.exports = class extends Generator {
 
    async prompting() {
       this.log(
-         yosay(`Welcome to the ${chalk.red('micronaut domain')} boilerplate generator`)
+         yosay(`Welcome to the ${chalk.red('Micronaut domain')} boilerplate generator`)
       );
       const questions = [{
          type: 'input',
          name: 'name',
          message: 'What is the name of your project?',
-         default: this.appname,
          store: true
       }, {
          type: 'input',
          name: 'basePkg',
          message: 'What is the base package?',
-         default: 'tech.developersid',
          store: true
       }, {
          type: 'input',
          name: 'lob',
          message: "What is the name of this line of business?",
-         default: 'StuffDoer',
          store: true
       }];
 
