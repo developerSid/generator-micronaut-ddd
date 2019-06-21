@@ -72,11 +72,11 @@ module.exports = class extends Generator {
          'main/kotlin/TypeDomainEntity.kt.template': `src/main/kotlin/${pkgPath}/domain/TypeDomainEntity.kt`,
          'main/kotlin/TypeDomainService.kt.template': `src/main/kotlin/${pkgPath}/domain/TypeDomainService.kt`,
          'main/kotlin/ValueObject.kt.template': `src/main/kotlin/${pkgPath}/domain/ValueObject.kt`,
-         'main/kotlin/ValueObjectBase.kt.template': `src/main/kotlin/${pkgPath}/domain/ValueObjectBase.kt.template`,
-         'main/kotlin/infrastructure/IdentifiableService.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/IdentifiableService.kt.template`,
-         'main/kotlin/infrastructure/Repository.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/Repository.kt.template`,
-         'main/kotlin/infrastructure/RepositoryPage.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/RepositoryPage.kt.template`,
-         'main/kotlin/infrastructure/TypeDomainRepository.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/TypeDomainRepository.kt.template`,
+         'main/kotlin/ValueObjectBase.kt.template': `src/main/kotlin/${pkgPath}/domain/ValueObjectBase.kt`,
+         'main/kotlin/infrastructure/IdentifiableService.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/IdentifiableService.kt`,
+         'main/kotlin/infrastructure/Repository.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/Repository.kt`,
+         'main/kotlin/infrastructure/RepositoryPage.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/RepositoryPage.kt`,
+         'main/kotlin/infrastructure/TypeDomainRepository.kt.template': `src/main/kotlin/${pkgPath}/domain/infrastructure/TypeDomainRepository.kt`,
       };
 
       this.log(`Generating Domain ${chalk.green(lineOfBusiness)}`);
