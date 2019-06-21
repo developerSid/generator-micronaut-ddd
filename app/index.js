@@ -3,9 +3,7 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const camelCase = require('camel-case');
-const pascalCase = require('pascal-case');
 const dotCase = require('dot-case');
-const decamelize = require('decamelize');
 
 module.exports = class extends Generator {
    constructor(args, opts) {

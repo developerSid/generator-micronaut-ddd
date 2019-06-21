@@ -53,8 +53,6 @@ module.exports = class extends Generator {
          table: tableName
       };
 
-      console.log(`domain: ${domain}`);
-
       const templates = {
          'Entity.kt.template': `src/main/kotlin/${pkgPath}/${appName}/${domainPath}/${templateValues.domain}.kt`,
          'ValueObject.kt.template': `src/main/kotlin/${pkgPath}/${appName}/${domainPath}/${templateValues.domain}ValueObject.kt`,
@@ -83,19 +81,11 @@ module.exports = class extends Generator {
 function determineDomainPackage(existing, domain) {
    let toReturn;
 
-   console.log(`existing ${existing}`);
-   console.log(`domain ${domain}`);
-   console.log(existing != null);
-
    if (existing != null && existing.length > 3) {
-      console.log('first');
       toReturn = existing;
    } else {
-      console.log('second');
       toReturn = domain;
    }
-
-   console.log(`toReturn ${toReturn}`);
 
    return dotCase(camelCase(toReturn))
 }
