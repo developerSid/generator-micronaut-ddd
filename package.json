@@ -1,6 +1,6 @@
 {
   "name": "generator-micronaut-ddd",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Micronaut generator for kotlin based micronaut components",
   "main": "index.js",
   "scripts": {
@@ -35,9 +35,6 @@
     "yosay": "^2.0.2"
   },
   "files": [
-    "app",
-    "controller",
-    "domain",
-    "migration"
+    "generators"
   ]
 }
