@@ -1,6 +1,6 @@
 {
   "name": "generator-micronaut-ddd",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Micronaut generator for kotlin based micronaut components",
   "main": "index.js",
   "scripts": {

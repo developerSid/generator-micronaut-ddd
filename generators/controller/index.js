@@ -32,8 +32,6 @@ module.exports = class extends Generator {
       const lineOfBusiness = this.config.get('lob');
       const pkg = this.config.get('basePkg');
       const pkgPath = pkg.replace(/\./gi, '/');
-      const mainSrc = this.config.get('mainSrc');
-      const testSrc = this.config.get('testSrc');
       const domainPackage = dotCase(camelCase(domain));
       const domainPath = domainPackage.replace(/\./gi, '/');
       const fullDomainPackage = `${pkg}.${appName}.${domainPackage}`;
@@ -49,8 +47,8 @@ module.exports = class extends Generator {
       };
 
       const templates = {
-         'Controller.kt.template': `${mainSrc}/${pkgPath}/${appName}/${domainPath}/infrastructure/${templateValues.domain}Controller.kt`,
-         'ControllerSpecification.groovy.template': `${testSrc}/${pkgPath}/${appName}/${domainPath}/infrastructure/${templateValues.domain}ControllerSpecification.groovy`,
+         'Controller.kt.template': `src/main/kotlin/${pkgPath}/${appName}/${domainPath}/infrastructure/${templateValues.domain}Controller.kt`,
+         'ControllerSpecification.groovy.template': `src/main/test/${pkgPath}/${appName}/${domainPath}/infrastructure/${templateValues.domain}ControllerSpecification.groovy`,
       };
 
       this.log(`Generating Domain ${chalk.green(this.options.domain)}`);
