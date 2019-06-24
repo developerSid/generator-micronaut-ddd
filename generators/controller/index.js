@@ -48,7 +48,7 @@ module.exports = class extends Generator {
 
       const templates = {
          'Controller.kt.template': `src/main/kotlin/${pkgPath}/${appName}/${domainPath}/infrastructure/${templateValues.domain}Controller.kt`,
-         'ControllerSpecification.groovy.template': `src/main/test/${pkgPath}/${appName}/${domainPath}/infrastructure/${templateValues.domain}ControllerSpecification.groovy`,
+         'ControllerSpecification.groovy.template': `src/test/${pkgPath}/${appName}/${domainPath}/infrastructure/${templateValues.domain}ControllerSpecification.groovy`,
       };
 
       this.log(`Generating Domain ${chalk.green(this.options.domain)}`);
